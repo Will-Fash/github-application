@@ -32,6 +32,9 @@ const Repos = () => {
     return {...item,value: item.stars};
   }).slice(0, 5);
 
+  //stars and forks
+  let
+
   console.log(mostPopular);
 
   const chartData = [
