@@ -23,13 +23,13 @@ const ChartComponent = ({data}) => {
   // STEP 2 - Creating the JSON object to store the chart configurations
   const chartConfigs = {
   type: "doughnut2d", // The chart type
-  width: "400", // Width of the chart
+  width: "100%", // Width of the chart
   height: "400", // Height of the chart
   dataFormat: "json", // Data type
   dataSource: {
     // Chart Configuration
     chart: {
-      caption: "Stars per Language",
+      caption: "Stars Per Language",
       decimals: 0,
       doughnutRadius: "40%",
       showPercentValues: 0,

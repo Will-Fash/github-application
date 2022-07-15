@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+
 const Repos = () => {
   const {repos} = useContext(GithubContext);
 
@@ -20,11 +21,18 @@ const Repos = () => {
   }, {})
 
   // To extract the 5 most popular languages depending on the amount of times they appear in the repos array
-  languages = Object.values(languages).sort((a, b) => {
+  const mostUsed = Object.values(languages).sort((a, b) => {
     return b.value - a.value;
   }).slice(0, 5);
 
-  console.log(languages);
+  // most stars per language
+  const mostPopular = Object.values(languages).sort((a, b) => {
+    return b.stars = a.stars;
+  }).map((item) => {
+    return {...item,value: item.stars};
+  }).slice(0, 5);
+
+  console.log(mostPopular);
 
   const chartData = [
   {
@@ -43,11 +51,10 @@ const Repos = () => {
 
   return <section className={"section"}>
     <Wrapper className={"section-center"}>
-      <Pie3D data={languages}/>
-      <div>
-      </div>
-      <Doughnut2D data={chartData}/>
-      {/*<ExampleChart data={chartData}/>*/}
+      <Pie3D data={mostUsed}/>
+      <Column3D data={chartData}/>
+      <Doughnut2D data={mostPopular}/>
+      <Bar3D data={chartData}/>
     </Wrapper>
   </section>
 
